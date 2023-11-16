@@ -9,4 +9,4 @@ jobs:
 
     steps:
     - name: Run unit tests
-      run: npm test
+      run: tests.py
