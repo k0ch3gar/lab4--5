@@ -1,0 +1,12 @@
+name: Run Unit Tests
+
+on: push
+
+jobs:
+  test:
+  
+    runs-on: [ubuntu-latest, windows-latest]
+
+    steps:
+    - name: Run unit tests
+      run: npm test
