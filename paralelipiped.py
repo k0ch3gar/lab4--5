@@ -12,6 +12,6 @@ class Paralelipiped:
         return self.height * self.length * self.width
 
 
-paralelipiped = Paralelipiped(3,2,4)
+paralelipiped = Paralelipiped(1,2,3)
 print(paralelipiped.area(),paralelipiped.volume())
 print("hello world")
