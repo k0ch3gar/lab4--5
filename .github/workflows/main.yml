@@ -1,29 +1,26 @@
-name: Run Unit Tests
+name: Run unit tests
 
-on: push
+on: [push]
 
 jobs:
-  test:
-  
-    runs-on: [ubuntu-latest, windows-latest]
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
 
     steps:
- 
-      - name: Run unit tests
-        run: npm test
-      - name: Upload test results
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-results
-          path: test_results
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-results
-          path: test_results
-          if-no-files-found: error
-          continue-on-error: true
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
 
-        
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run unit tests
+      run: npm test
