@@ -1,16 +1,15 @@
 name: Run unit tests
 
-on: [push]
+on:
+  push:
+    branches : [main]
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-
-    steps:
+    runs-on: 
+      [ubuntu-latest,windows-latest]
+      
+      steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
@@ -24,3 +23,8 @@ jobs:
 
     - name: Run unit tests
       run: npm test
+
+        
+      
+    
+  
